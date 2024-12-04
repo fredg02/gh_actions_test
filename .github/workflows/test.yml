@@ -1,0 +1,14 @@
+name: Workflow_Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Wget
+        run: https://repo.eclipse.org/content/repositories/eclipse-snapshots/org/eclipse/jdt/ecj/3.40.100-SNAPSHOT/ecj-3.40.100-20241204.003112-1.pom?describe
+      - name: cat
+        run: cat ecj-3.40.100-20241204.003112-1.pom?describe
