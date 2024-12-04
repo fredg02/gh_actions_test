@@ -53,8 +53,8 @@ jobs:
       shell: bash
       run: >- 
         mvn
+        -U
         -ntp
-        --batch-mode
         -Pbuild-individual-bundles
         -Pbree-libs
         -DskipTests
