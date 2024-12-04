@@ -7,12 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Verify Linux
     steps:
-    - name: Checkout tycho code
-      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      with:
-       path: 'tycho'
-       repository: 'eclipse-tycho/tycho'
-       fetch-depth: 0
+    #- name: Checkout tycho code
+    #  uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+    #  with:
+    #   path: 'tycho'
+    #   repository: 'eclipse-tycho/tycho'
+    #   fetch-depth: 0
     - name: Checkout platform code
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       with:
@@ -40,14 +40,14 @@ jobs:
       uses: stCarolas/setup-maven@d6af6abeda15e98926a57b5aa970a96bb37f97d1 # v5
       with:
         maven-version: 3.9.9
-    - name: Build Tycho
-      working-directory: 'tycho'
-      run: >- 
-        mvn -U -V -e -B -ntp
-        -DskipTests
-        --file pom.xml
-        -T1C
-        clean install
+    #- name: Build Tycho
+    #  working-directory: 'tycho'
+    #  run: >- 
+    #    mvn -U -V -e -B -ntp
+    #    -DskipTests
+    #    --file pom.xml
+    #    -T1C
+    #    clean install
     - name: Run Platform SWT Build
       working-directory: 'swt'
       shell: bash
@@ -58,6 +58,6 @@ jobs:
         -Pbuild-individual-bundles
         -Pbree-libs
         -DskipTests
-        -Dtycho.version=$(mvn help:evaluate -f ../tycho -Dexpression=project.version -q -DforceStdout)
+        #-Dtycho.version=$(mvn help:evaluate -f ../tycho -Dexpression=project.version -q -DforceStdout)
         -T1C
         clean verify
